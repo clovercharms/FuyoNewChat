@@ -1,0 +1,150 @@
+/* Hide everything unnecessary */
+#input-panel,
+yt-live-chat-viewer-engagement-message-renderer,
+yt-live-chat-header-renderer,
+#live-chat-banners,
+yt-live-chat-banner-manager,
+yt-live-chat-banner-renderer,
+iron-pages,
+#separator,
+#fab-container,
+.yt-reaction-control-panel-button-view-model,
+#toast-container,
+#ticker {
+    display: none;
+}
+
+/* transparent background, hide scrollbar */
+yt-live-chat-renderer,
+html,
+body,
+#item-scroller {
+    background-color: transparent;
+    scrollbar-width: none;
+}
+
+    #item-scroller::-webkit-scrollbar {
+        display: none;
+    }
+
+/* styling */
+yt-live-chat-text-message-renderer {
+    display: block;
+    max-height: 600px;
+    background-color: rgba(0, 0, 0, 0.0) !important;
+    overflow: hidden;
+    margin: -5px 0px 5px 0px !important;
+}
+
+    yt-live-chat-text-message-renderer > #content {
+        display: block !important;
+    }
+
+    yt-live-chat-text-message-renderer yt-live-chat-author-chip {
+        z-index: 8;
+        min-width: 100px;
+        max-width: 240px;
+        transform: rotate(-3deg) translate(25px, 5px);
+        position: relative;
+        display: inline-flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
+        z-index: 9;
+        position: absolute;
+        transform: translate(33px, 11px);
+    }
+
+    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
+        display: inline-block;
+        padding: 4px;
+        text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+        color: #E0F2DB !important;
+        padding-left: 35px !important;
+        padding-right: 32px !important;
+        min-width: 90px;
+        font-size: 2.2rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        background-color: #41464d !important;
+        border-color: #e7e7e7;
+        border: solid 2px !important;
+        border-radius: 5px !important;
+        white-space: nowrap;
+        height: 32px;
+        font-family: subscribe;
+    }
+
+    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#chat-badges {
+        position: absolute;
+        right: 0px;
+        padding: 5px;
+        padding-right: 10px;
+        z-index: 10;
+    }
+
+    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.member {
+        background-color: #2ba640 !important;
+    }
+
+    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.moderator {
+        background-color: #5e84f1 !important;
+    }
+
+yt-live-chat-author-badge-renderer[type="moderator"] {
+    display: none;
+}
+
+yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.owner {
+    background-color: #ffd600 !important;
+    color: #41464d !important;
+}
+
+yt-live-chat-text-message-renderer span#message {
+    font-family: subscribe;
+    display: block;
+    background: #e7e7e7 !important;
+    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+    color: #E0F2DB !important;
+    padding: 18px 5px 8px 15px !important;
+    margin-top: -9px;
+    font-size: 2.2rem;
+    border-radius: 10px !important;
+    border-color: #41464d;
+    border: solid 2px !important;
+    min-height: 24px;
+    text-align: center left !important;
+    background-repeat: no-repeat !important;
+    background-position: calc(100% + 7px) calc(100% + 17px) !important;
+    /* exchange emoji below for "theming"? 🎃❄️🌸☀️ */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🎃</text></svg>") !important;
+}
+
+@font-face {
+    font-family: "subscribe";
+    font-weight: 400;
+    src: local("Subscribe");
+}
+
+#menu,
+yt-live-chat-action-panel-renderer,
+ytd-sponsorships-live-chat-gift-redemption-announcement-renderer,
+#action-panel {
+    display: none !important;
+}
+
+@keyframes appear {
+    from {
+        filter: brightness(0.5);
+        bottom: -2rem;
+    }
+
+    to {
+        filter: brightness(1);
+        bottom: 0rem;
+    }
+}
+
+/* Made in cooperation between frammie, iSneeze and Matze149  */
