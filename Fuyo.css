@@ -1,130 +1,16 @@
-/* Hide everything unnecessary */
+/* Hiding irrelevant elements */
 #input-panel,
 yt-live-chat-viewer-engagement-message-renderer,
 yt-live-chat-header-renderer,
 #live-chat-banners,
 yt-live-chat-banner-manager,
 yt-live-chat-banner-renderer,
-iron-pages,
 #separator,
 #fab-container,
 .yt-reaction-control-panel-button-view-model,
 #toast-container,
 #ticker {
-    display: none;
-}
-
-/* transparent background, hide scrollbar */
-yt-live-chat-renderer,
-html,
-body,
-#item-scroller {
-    background-color: transparent;
-    scrollbar-width: none;
-}
-
-    #item-scroller::-webkit-scrollbar {
-        display: none;
-    }
-
-/* styling */
-yt-live-chat-text-message-renderer {
-    display: block;
-    max-height: 600px;
-    background-color: rgba(0, 0, 0, 0.0) !important;
-    overflow: hidden;
-    margin: -5px 0px 5px 0px !important;
-}
-
-    yt-live-chat-text-message-renderer > #content {
-        display: block !important;
-    }
-
-    yt-live-chat-text-message-renderer yt-live-chat-author-chip {
-        z-index: 8;
-        min-width: 100px;
-        max-width: 240px;
-        transform-origin: center left;
-        transform: rotate(-3deg) translate(25px, 9px);
-        position: relative;
-        display: inline-flex;
-        justify-content: left;
-        align-items: center;
-    }
-
-    yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
-        z-index: 9;
-        position: absolute;
-        transform: translate(33px, 11px);
-    }
-
-    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
-        display: inline-block;
-        padding: 2px 32px 4px 35px !important;
-        text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
-        color: #E0F2DB !important;
-        min-width: 90px;
-        font-size: 2.2rem;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        background-color: #41464d !important;
-        border-color: #e7e7e7;
-        border: solid 2px !important;
-        border-radius: 5px !important;
-        white-space: nowrap;
-        height: 32px;
-        font-family: subscribe;
-    }
-
-    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#chat-badges {
-        position: absolute;
-        right: 0px;
-        padding: 5px;
-        padding-right: 10px;
-        z-index: 10;
-    }
-
-    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.member {
-        background-color: #2ba640 !important;
-    }
-
-    yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.moderator {
-        background-color: #5e84f1 !important;
-    }
-
-yt-live-chat-author-badge-renderer[type="moderator"] {
-    display: none;
-}
-
-yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name.owner {
-    background-color: #ffd600 !important;
-    color: #41464d !important;
-}
-
-yt-live-chat-text-message-renderer span#message {
-    font-family: subscribe;
-    display: block;
-    background: #e7e7e7 !important;
-    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
-    color: #E0F2DB !important;
-    padding: 18px 5px 8px 15px !important;
-    margin-top: -9px;
-    font-size: 2.2rem;
-    border-radius: 10px !important;
-    border-color: #41464d;
-    border: solid 2px !important;
-    min-height: 24px;
-    text-align: center left !important;
-    background-repeat: no-repeat !important;
-    background-position: calc(100% + 7px) calc(100% + 17px) !important;
-    /* exchange emoji below for "theming"? 🎃❄️🌸☀️🍀 - Last one is a 4-leaf clover */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🍀</text></svg>") !important;
-}
-
-@font-face {
-    font-family: "subscribe";
-    font-weight: 400;
-    src: local("Subscribe");
+    display: none !important;
 }
 
 #menu,
@@ -134,16 +20,215 @@ ytd-sponsorships-live-chat-gift-redemption-announcement-renderer,
     display: none !important;
 }
 
-@keyframes appear {
-    from {
-        filter: brightness(0.5);
-        bottom: -2rem;
-    }
+html,
+body,
+yt-live-chat-renderer,
+#item-scroller {
+    background-color: transparent !important;
+    scrollbar-width: none !important;
+}
 
-    to {
-        filter: brightness(1);
-        bottom: 0rem;
+#item-scroller::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Adjustable configuration variables */
+:root {
+    --chat-font: "Subscribe";
+    --chat-font-size: 2.2rem;
+    --chat-photo-size: 2.2rem;
+    --chat-author-badge-size: 2rem;
+    --chat-author-rotation: -1.2deg;
+    --chat-author-height: 3.6rem;
+    --chat-author-width: 20rem;
+    --chat-border-width: 3px;
+    --chat-border-radius: 1rem;
+    --chat-author-viewer-background-color: #d1f5aa;
+    --chat-author-member-background-color: #d1f5aa;
+    --chat-author-moderator-background-color: lightblue;
+    --chat-author-owner-background-color: #ffd600;
+}
+
+/* Disable default reveal animation */
+yt-live-chat-item-list-renderer #items {
+    transform: translateY(0) !important;
+}
+
+/* Animation for message appearing */
+@keyframes message-slide-up {
+    from {
+        transform: translateY(5rem);
+        filter: brightness(0.5);
     }
+    to {
+        transform: translateY(0rem);
+        filter: brightness(1);
+    }
+}
+
+/* Message container */
+yt-live-chat-text-message-renderer {
+    display: block !important;
+    padding: var(--chat-border-width) 0 !important;
+    animation: 1s message-slide-up !important;
+}
+
+@keyframes author-slide-up {
+    from {
+        transform: rotate(-4deg) translate(1.5rem, 1.2rem);
+    }
+    to {
+        transform: rotate(var(--chat-author-rotation)) translate(1.5rem, 1.2rem);
+    }
+}
+
+/* Message author container */
+yt-live-chat-text-message-renderer yt-live-chat-author-chip {
+    font-family: var(--chat-font) !important;
+    font-size: var(--chat-font-size) !important;
+    transform-origin: center left !important;
+    -webkit-text-stroke: 1px #406345 !important;
+    height: var(--chat-author-height) !important;
+    padding-left: calc(var(--chat-photo-size) + 1.5rem) !important;
+    padding-right: 0.5rem !important;
+    position: relative !important;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    animation: 1s author-slide-up forwards;
+}
+
+/* Message author 3d effect */
+yt-live-chat-text-message-renderer yt-live-chat-author-chip::before {
+    content: "" !important;
+    position: absolute;
+    inset: 0 !important;
+    /* Offset from parent */
+    left: -0.5rem !important;
+    top: 0.5rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #d1f5aa !important;
+    border: var(--chat-border-width) solid #85c6a2 !important;
+    border-radius: var(--chat-border-radius) !important;
+    box-sizing: border-box;
+    z-index: -2;
+}
+
+/* Message author backround */
+yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--chat-author-viewer-background-color) !important;
+    border: var(--chat-border-width) solid #85c6a2 !important;
+    border-radius: var(--chat-border-radius) !important;
+    box-sizing: border-box !important;
+    z-index: -1 !important;
+}
+
+/* Position and animate author photo */
+yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
+    position: absolute !important;
+    left: 1rem !important;
+    height: var(--chat-author-height) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    z-index: 1 !important;
+    animation: 1s author-slide-up forwards !important;
+}
+
+/* Author photo appearance */
+yt-live-chat-text-message-renderer > yt-img-shadow#author-photo > img {
+    width: var(--chat-photo-size) !important;
+    height: var(--chat-photo-size) !important;
+    border-radius: 100% !important;
+}
+
+/* Align chat badges */
+yt-live-chat-text-message-renderer yt-live-chat-author-chip > #chat-badges {
+    margin: 0 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Author text appearance */
+yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
+    color: #e0f2db !important;
+    max-width: var(--chat-author-width) !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+/* Author background colors based on type */
+yt-live-chat-text-message-renderer[author-type="member"]
+    yt-live-chat-author-chip::after {
+    background-color: var(--chat-author-member-background-color) !important;
+}
+yt-live-chat-text-message-renderer[author-type="moderator"]
+    yt-live-chat-author-chip::after {
+    background-color: var(--chat-author-moderator-background-color) !important;
+}
+yt-live-chat-text-message-renderer[author-type="owner"]
+    yt-live-chat-author-chip::after {
+    background-color: var(--chat-author-owner-background-color) !important;
+}
+
+/* Author badge appearance */
+yt-live-chat-author-badge-renderer img {
+    width: var(--chat-author-badge-size) !important;
+    height: var(--chat-author-badge-size) !important;
+}
+
+/* Hide moderator badges */
+yt-live-chat-author-badge-renderer[type="moderator"] {
+    display: none !important;
+}
+
+/* Chat message container */
+yt-live-chat-text-message-renderer span#message {
+    all: unset !important;
+    font-family: var(--chat-font) !important;
+    display: block !important;
+    background: white !important;
+    -webkit-text-stroke: 1.3px #7cc296 !important;
+    color: #f0fee4 !important;
+    padding: 1rem !important;
+    /* To compensate angled author chip */
+    padding-top: 1.75rem !important;
+    font-size: var(--chat-font-size) !important;
+    border-radius: var(--chat-border-radius) !important;
+    border-color: #41464d !important;
+    border-top: solid var(--chat-border-width) #e0f0be !important;
+    border-right: solid var(--chat-border-width) #e0f0be !important;
+    min-height: 24px !important;
+    text-align: center left !important;
+    box-shadow: -2px 4px 0px 0px #5bac6a !important;
+}
+
+/* Super chat container */
+yt-live-chat-paid-message-renderer {
+    all: unset !important;
+    font-family: var(--chat-font) !important;
+    font-size: var(--chat-font-size) !important;
+}
+
+/* Margin between superchat and messages */
+yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer > .card {
+    margin: 2rem !important;
+}
+
+yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer {
+    color: white !important;
+    -webkit-text-stroke: 1.3px #406345 !important;
+    box-shadow: none !important;
+}
+
+yt-live-chat-paid-message-renderer yt-live-chat-author-chip {
+    font-size: unset !important;
 }
 
 /* Made in cooperation between frammie, iSneeze and Matze149  */
