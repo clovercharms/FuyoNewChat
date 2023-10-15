@@ -44,7 +44,8 @@ yt-live-chat-text-message-renderer {
         z-index: 8;
         min-width: 100px;
         max-width: 240px;
-        transform: rotate(-3deg) translate(25px, 5px);
+        transform-origin: center left;
+        transform: rotate(-3deg) translate(25px, 9px);
         position: relative;
         display: inline-flex;
         justify-content: left;
@@ -59,11 +60,9 @@ yt-live-chat-text-message-renderer {
 
     yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
         display: inline-block;
-        padding: 4px;
+        padding: 2px 32px 4px 35px !important;
         text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
         color: #E0F2DB !important;
-        padding-left: 35px !important;
-        padding-right: 32px !important;
         min-width: 90px;
         font-size: 2.2rem;
         text-overflow: ellipsis;
@@ -118,8 +117,8 @@ yt-live-chat-text-message-renderer span#message {
     text-align: center left !important;
     background-repeat: no-repeat !important;
     background-position: calc(100% + 7px) calc(100% + 17px) !important;
-    /* exchange emoji below for "theming"? 🎃❄️🌸☀️ */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🎃</text></svg>") !important;
+    /* exchange emoji below for "theming"? 🎃❄️🌸☀️🍀 - Last one is a 4-leaf clover */
+    background-image: url("data:imOage/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🎃</text></svg>") !important;
 }
 
 @font-face {
