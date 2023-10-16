@@ -47,6 +47,12 @@ yt-live-chat-renderer,
     --chat-author-member-background-color: #d1f5aa;
     --chat-author-moderator-background-color: lightblue;
     --chat-author-owner-background-color: #ffd600;
+    --background-dot-color: #adf4ad;
+    --background-dot-size: 3px;
+    --background-size-x: 20px;
+    --background-size-y: 20px;
+    --background-position-x: -19px;
+    --background-position-y: -19px;
 }
 
 /* Disable default reveal animation */
@@ -194,6 +200,9 @@ yt-live-chat-text-message-renderer span#message {
     font-family: var(--chat-font) !important;
     display: block !important;
     background: white !important;
+    background-image: radial-gradient(var(--background-dot-color) var(--background-dot-size), white 0) !important;
+    background-size: var(--background-size-x) var(--background-size-y) !important;
+    background-position: var(--background-position-x) var(--background-position-y) !important;
     -webkit-text-stroke: 1.3px #7cc296 !important;
     color: #f0fee4 !important;
     padding: 1rem !important;
