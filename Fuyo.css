@@ -224,11 +224,10 @@ yt-live-chat-text-message-renderer span#message {
     padding-top: 1.75rem !important;
     font-size: var(--chat-font-size) !important;
     border-radius: var(--chat-border-radius) !important;
-    border-top: solid var(--chat-border-width) #e0f0be !important;
-    border-right: solid var(--chat-border-width) #e0f0be !important;
+    border: solid var(--chat-border-width) #e0f0be !important;
     min-height: 24px !important;
     text-align: center left !important;
-    box-shadow: -2px 4px 0px 0px #5bac6a !important;
+    box-shadow: -2px 3px 0px 0px #5bac6a !important;
     /* For message background gradient/decoration */
     position: relative !important;
     z-index: -2 !important;
