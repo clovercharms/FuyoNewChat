@@ -1,3 +1,51 @@
+/* Adjustable configuration variables */
+:root {
+    /* Theme Colors */
+    --chat-color-accent: #f0fee4;
+    --chat-color-primary: #cbf2aa;
+    --chat-color-secondary: #71c185;
+    --chat-color-tertiary: #406345;
+
+    /* General */
+    --chat-font: "Subscribe";
+    --chat-font-size: 2.2rem;
+    --chat-photo-size: 2.2rem;
+    --chat-border-width: 3px;
+    --chat-border-radius: 1rem;
+
+    /* Author */
+    --chat-author-badge-size: 2rem;
+    --chat-author-rotation: -1.2deg;
+    --chat-author-height: 3.6rem;
+    --chat-author-width: 20rem;
+    --chat-author-color-font: var(--chat-color-accent);
+    --chat-author-color-font-stroke: 1px var(--chat-color-tertiary);
+    --chat-author-color-viewer: #cbf2aa;
+    --chat-author-color-viewer-border: #71c185;
+    --chat-author-color-member: #cbf2aa;
+    --chat-author-color-member-border: #71c185;
+    --chat-author-color-moderator: lightblue;
+    --chat-author-color-moderator-border: #8aacb8;
+    --chat-author-color-owner: #ffd600;
+    --chat-author-color-owner-border: #ccab00;
+
+    /* Message */
+    --chat-message-color-font: var(--chat-color-accent);
+    --chat-message-color-font-stroke: 1px var(--chat-color-secondary);
+    --chat-message-color-border: var(--chat-color-primary);
+    --chat-message-color-box-shadow: var(--chat-color-secondary);
+    --chat-message-color-background: white;
+    --chat-message-background-dot-color: #ecf1f0;
+    --chat-message-background-dot-size: 3px;
+    --chat-message-background-size: 2rem 2rem;
+    --chat-message-decoration-size: 3;
+    --chat-message-decoration-offset-left: 2rem;
+
+    /* Paid Messages */
+    --chat-paid-message-color-font: var(--chat-color-accent);
+    --chat-paid-message-font-stroke: 1px var(--chat-color-secondary);
+}
+
 /* Hiding irrelevant elements */
 #input-panel,
 yt-live-chat-viewer-engagement-message-renderer,
@@ -32,28 +80,6 @@ yt-live-chat-renderer,
     display: none !important;
 }
 
-/* Adjustable configuration variables */
-:root {
-    --chat-font: "Subscribe";
-    --chat-font-size: 2.2rem;
-    --chat-photo-size: 2.2rem;
-    --chat-author-badge-size: 2rem;
-    --chat-author-rotation: -1.2deg;
-    --chat-author-height: 3.6rem;
-    --chat-author-width: 20rem;
-    --chat-border-width: 3px;
-    --chat-border-radius: 1rem;
-    --chat-author-viewer-background-color: #d1f5aa;
-    --chat-author-member-background-color: #d1f5aa;
-    --chat-author-moderator-background-color: lightblue;
-    --chat-author-owner-background-color: #ffd600;
-    --chat-background-dot-color: #ecf1f0;
-    --chat-background-dot-size: 3px;
-    --chat-background-size: 2rem 2rem;
-    --chat-message-decoration-size: 3;
-    --chat-message-decoration-offset-left: 2rem;
-}
-
 /* Disable default reveal animation */
 yt-live-chat-item-list-renderer #items {
     transform: translateY(0) !important;
@@ -75,6 +101,7 @@ yt-live-chat-item-list-renderer #items {
 yt-live-chat-text-message-renderer {
     display: block !important;
     padding: var(--chat-border-width) 0 !important;
+    padding-left: var(--chat-border-width) !important;
     animation: 1s message-slide-up !important;
 }
 
@@ -91,10 +118,11 @@ yt-live-chat-text-message-renderer {
 yt-live-chat-text-message-renderer yt-live-chat-author-chip {
     font-family: var(--chat-font) !important;
     font-size: var(--chat-font-size) !important;
+    color: var(--chat-author-color-font) !important;
+    -webkit-text-stroke: var(--chat-author-color-font-stroke) !important;
     transform-origin: center left !important;
-    -webkit-text-stroke: 1px #406345 !important;
     height: var(--chat-author-height) !important;
-    padding-left: calc(var(--chat-photo-size) + 1.5rem) !important;
+    padding-left: calc(var(--chat-photo-size) + 1.25rem) !important;
     padding-right: 1rem !important;
     position: relative !important;
     box-sizing: border-box;
@@ -114,22 +142,24 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::before {
     top: 0.5rem !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: #d1f5aa !important;
-    border: var(--chat-border-width) solid #85c6a2 !important;
+    background-color: var(--chat-author-color-viewer) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-viewer-border) !important;
     border-radius: var(--chat-border-radius) !important;
     box-sizing: border-box;
     z-index: -2;
 }
 
-/* Message author backround */
+/* Message author background */
 yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: var(--chat-author-viewer-background-color) !important;
-    border: var(--chat-border-width) solid #85c6a2 !important;
+    background-color: var(--chat-author-color-viewer) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-viewer-border) !important;
     border-radius: var(--chat-border-radius) !important;
     box-sizing: border-box !important;
     z-index: -1 !important;
@@ -139,7 +169,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
 yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
     position: absolute !important;
     left: 1rem !important;
-    height: var(--chat-author-height) !important;
+    min-height: var(--chat-author-height) !important;
     display: inline-flex !important;
     align-items: center !important;
     z-index: 2 !important;
@@ -172,7 +202,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip #chat-badges > * {
 
 /* Author text appearance */
 yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
-    color: #e0f2db !important;
+    all: unset !important;
     max-width: var(--chat-author-width) !important;
     /* [HACK] Fix font stroke clip on chrome */
     padding: 0 1px !important;
@@ -183,16 +213,27 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip span#author-name {
 
 /* Author background colors based on type */
 yt-live-chat-text-message-renderer[author-type="member"]
+    yt-live-chat-author-chip::before,
+yt-live-chat-text-message-renderer[author-type="member"]
     yt-live-chat-author-chip::after {
-    background-color: var(--chat-author-member-background-color) !important;
+    background-color: var(--chat-author-color-member) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-member-border) !important;
 }
 yt-live-chat-text-message-renderer[author-type="moderator"]
+    yt-live-chat-author-chip::before,
+yt-live-chat-text-message-renderer[author-type="moderator"]
     yt-live-chat-author-chip::after {
-    background-color: var(--chat-author-moderator-background-color) !important;
+    background-color: var(--chat-author-color-moderator) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-moderator-border) !important;
 }
 yt-live-chat-text-message-renderer[author-type="owner"]
+    yt-live-chat-author-chip::before,
+yt-live-chat-text-message-renderer[author-type="owner"]
     yt-live-chat-author-chip::after {
-    background-color: var(--chat-author-owner-background-color) !important;
+    background-color: var(--chat-author-color-owner) !important;
+    border: var(--chat-border-width) solid var(--chat-author-color-owner-border) !important;
 }
 
 /* Author badge appearance */
@@ -210,36 +251,42 @@ yt-live-chat-author-badge-renderer[type="moderator"] {
 yt-live-chat-text-message-renderer span#message {
     all: unset !important;
     font-family: var(--chat-font) !important;
+    color: var(--chat-message-color-font) !important;
+    -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
     display: block !important;
     background-image: radial-gradient(
-        var(--chat-background-dot-color) var(--chat-background-dot-size),
-        white 0
+        var(--chat-message-background-dot-color)
+            var(--chat-message-background-dot-size),
+        var(--chat-message-color-background) 0
     ) !important;
     background-position-y: bottom !important;
-    background-size: var(--chat-background-size) !important;
-    -webkit-text-stroke: 1.3px #7cc296 !important;
-    color: #f0fee4 !important;
+    background-size: var(--chat-message-background-size) !important;
     padding: 1rem !important;
     /* To compensate angled author chip */
     padding-top: 1.75rem !important;
     font-size: var(--chat-font-size) !important;
     border-radius: var(--chat-border-radius) !important;
-    border: solid var(--chat-border-width) #e0f0be !important;
+    border: solid var(--chat-border-width) var(--chat-message-color-border) !important;
     min-height: 24px !important;
     text-align: center left !important;
-    box-shadow: -2px 3px 0px 0px #5bac6a !important;
+    box-shadow: calc(var(--chat-border-width) * -1) var(--chat-border-width) 0px
+        0px var(--chat-message-color-box-shadow) !important;
     /* For message background gradient/decoration */
     position: relative !important;
     z-index: -2 !important;
 }
 
-/* White gradient over message background */
+/* Gradient over message background */
 yt-live-chat-text-message-renderer span#message::before {
     all: unset !important;
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(180deg, #ffff 20%, #0000 100%) !important;
+    background: linear-gradient(
+        180deg,
+        var(--chat-message-color-background) 20%,
+        #0000 100%
+    ) !important;
     border-radius: var(--chat-border-radius) !important;
     z-index: -1 !important;
 }
@@ -267,19 +314,10 @@ yt-live-chat-paid-message-renderer {
     font-size: var(--chat-font-size) !important;
 }
 
-/* Margin between superchat and messages */
-yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer > .card {
-    margin: 2rem !important;
-}
-
 yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer {
-    color: white !important;
-    -webkit-text-stroke: 1.3px #406345 !important;
+    color: var(--chat-paid-message-color-font) !important;
+    -webkit-text-stroke: var(--chat-paid-message-font-stroke) !important;
     box-shadow: none !important;
-}
-
-yt-live-chat-paid-message-renderer yt-live-chat-author-chip {
-    font-size: unset !important;
 }
 
 /* Made in cooperation between frammie, iSneeze and Matze149  */
