@@ -44,7 +44,7 @@
 
     /* Paid Messages */
     --chat-paid-message-color-font: var(--chat-color-accent);
-    --chat-paid-message-font-stroke: 1px var(--chat-color-secondary);
+    --chat-paid-message-color-font-stroke: 1px var(--chat-color-secondary);
 }
 
 /* Hiding irrelevant elements */
@@ -100,6 +100,7 @@ yt-live-chat-item-list-renderer #items {
 
 /* Message container */
 yt-live-chat-text-message-renderer {
+    all: unset !important;
     display: block !important;
     padding: var(--chat-border-width) 0 !important;
     padding-left: var(--chat-border-width) !important;
@@ -314,7 +315,7 @@ yt-live-chat-paid-message-renderer {
 
 yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer {
     color: var(--chat-paid-message-color-font) !important;
-    -webkit-text-stroke: var(--chat-paid-message-font-stroke) !important;
+    -webkit-text-stroke: var(--chat-paid-message-color-font-stroke) !important;
     box-shadow: none !important;
 }
 
