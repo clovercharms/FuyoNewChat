@@ -9,8 +9,9 @@
     /* General */
     --chat-font: "Subscribe";
     --chat-font-size: 2.2rem;
-    --chat-border-width: 3px;
+    --chat-border-width: 2.5px;
     --chat-border-radius: 1rem;
+    --chat-dot-spacing: 2rem;
 
     /* Author */
     --chat-author-photo-size: 2.2rem;
@@ -29,6 +30,8 @@
     --chat-author-color-moderator-border: #8aacb8;
     --chat-author-color-owner: #ffd600;
     --chat-author-color-owner-border: #ccab00;
+    --chat-author-background-dot-color: #daf5c3;
+    --chat-author-background-dot-size: 4px;
 
     /* Message */
     --chat-message-color-font: var(--chat-color-accent);
@@ -47,7 +50,6 @@
     --chat-message-depth-left-width: calc(var(--chat-border-width) * 0.75);
     --chat-message-background-dot-color: #ecf1f0;
     --chat-message-background-dot-size: 3px;
-    --chat-message-background-dot-spacing: 2rem;
     --chat-message-decoration-size: 3;
     --chat-message-decoration-offset-right: 2rem;
 
@@ -117,6 +119,31 @@ yt-live-chat-text-message-renderer {
         var(--chat-border-width) + var(--chat-message-padding-vertical)
     ) !important;
     animation: 1s message-slide-up !important;
+    width: 35rem;
+
+    /* Name plate and message background dots */
+    --chat-dot-spacing-first: var(--chat-dot-spacing);
+    --chat-dot-spacing-second: calc(var(--chat-dot-spacing) / 2);
+    /* Ensure a half size offset */
+    --chat-dot-spacing-half-offset: calc(
+        (var(--chat-dot-spacing) / 2) - var(--chat-message-background-dot-size)
+    );
+    --dot-background-position: calc(
+                var(--chat-dot-spacing-first) +
+                    var(--chat-dot-spacing-half-offset)
+            )
+            calc(
+                100% - var(--chat-dot-spacing-first) -
+                    var(--chat-dot-spacing-half-offset)
+            ),
+        calc(
+                var(--chat-dot-spacing-second) +
+                    var(--chat-dot-spacing-half-offset)
+            )
+            calc(
+                100% - var(--chat-dot-spacing-second) -
+                    var(--chat-dot-spacing-half-offset)
+            ) !important;
 }
 
 @keyframes author-slide-up {
@@ -177,6 +204,20 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
     border-radius: var(--chat-border-radius) !important;
     box-sizing: border-box !important;
     z-index: -1 !important;
+    background-image:
+        /* First row of dots */ radial-gradient(
+            var(--chat-author-background-dot-color)
+                var(--chat-author-background-dot-size),
+            transparent 0
+        ),
+        /* Second row of dots */
+            radial-gradient(
+                var(--chat-author-background-dot-color)
+                    var(--chat-author-background-dot-size),
+                transparent 0
+            ) !important;
+    background-position: var(--dot-background-position) !important;
+    background-size: var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
 }
 
 /* Position and animate author photo */
@@ -283,28 +324,9 @@ yt-live-chat-text-message-renderer span#message {
                     var(--chat-message-background-dot-size),
                 transparent 0
             ) !important;
-    --dot-spacing-first: var(--chat-message-background-dot-spacing);
-    --dot-spacing-second: calc(var(--chat-message-background-dot-spacing) / 2);
-    /* Ensure a half size offset */
-    --dot-spacing-half-offset: calc(
-        (var(--chat-message-background-dot-spacing) / 2) -
-            var(--chat-message-background-dot-size)
-    );
-    background-position: top,
-        calc(var(--dot-spacing-first) + var(--dot-spacing-half-offset))
-            calc(
-                100% - var(--dot-spacing-first) - var(--dot-spacing-half-offset)
-            ),
-        calc(var(--dot-spacing-second) + var(--dot-spacing-half-offset))
-            calc(
-                100% - var(--dot-spacing-second) -
-                    var(--dot-spacing-half-offset)
-            );
-    background-size: contain,
-        var(--chat-message-background-dot-spacing)
-            var(--chat-message-background-dot-spacing),
-        var(--chat-message-background-dot-spacing)
-            var(--chat-message-background-dot-spacing) !important;
+    background-position: top, var(--dot-background-position) !important;
+    background-size: contain, var(--chat-dot-spacing) var(--chat-dot-spacing),
+        var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
     padding: var(--chat-message-text-padding) !important;
     /* To compensate angled author chip */
     padding-top: calc(
