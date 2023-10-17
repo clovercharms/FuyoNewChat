@@ -42,7 +42,7 @@
     /* Should be half of the variable above to make the dots alternate */
     --chat-message-background-size-second-row: 1rem 1rem;
     --chat-message-decoration-size: 3;
-    --chat-message-decoration-offset-left: 2rem;
+    --chat-message-decoration-offset-right: 2rem;
 
     /* Paid Messages */
     --chat-paid-message-color-font: var(--chat-color-accent);
@@ -306,7 +306,7 @@ yt-live-chat-text-message-renderer span#message::after {
     top: calc(
         var(--chat-message-decoration-size) * (-15.457972px + 0.34rem)
     ) !important;
-    right: var(--chat-message-decoration-offset-left) !important;
+    right: var(--chat-message-decoration-offset-right) !important;
     width: calc(var(--chat-message-decoration-size) * 43.80468px) !important;
     height: calc(var(--chat-message-decoration-size) * 15.457972px) !important;
     background-size: 100% !important;
