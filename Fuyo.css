@@ -18,6 +18,7 @@
     --chat-author-rotation: -1.2deg;
     --chat-author-height: 3.6rem;
     --chat-author-width: 20rem;
+    --chat-author-offset: translate(1.5rem, 1.2rem);
     --chat-author-color-font: var(--chat-color-accent);
     --chat-author-color-font-stroke: 1px var(--chat-color-tertiary);
     --chat-author-color-viewer: #cbf2aa;
@@ -109,10 +110,10 @@ yt-live-chat-text-message-renderer {
 
 @keyframes author-slide-up {
     from {
-        transform: rotate(-4deg) translate(1.5rem, 1.2rem);
+        transform: rotate(-4deg) var(--chat-author-offset);
     }
     to {
-        transform: rotate(var(--chat-author-rotation)) translate(1.5rem, 1.2rem);
+        transform: rotate(var(--chat-author-rotation)) var(--chat-author-offset);
     }
 }
 
@@ -257,8 +258,18 @@ yt-live-chat-text-message-renderer span#message {
     -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
     display: block !important;
     background: var(--chat-message-color-background) !important;
-    background-image: radial-gradient( var(--chat-message-background-dot-color) var(--chat-message-background-dot-size), transparent 0 ), radial-gradient( var(--chat-message-background-dot-color) var(--chat-message-background-dot-size), transparent 0 ) !important;
-    background-position: var(--chat-message-background-size), var(--chat-message-background-size-second-row) !important;
+    background-image: radial-gradient(
+            var(--chat-message-background-dot-color)
+                var(--chat-message-background-dot-size),
+            transparent 0
+        ),
+        radial-gradient(
+            var(--chat-message-background-dot-color)
+                var(--chat-message-background-dot-size),
+            transparent 0
+        ) !important;
+    background-position: var(--chat-message-background-size),
+        var(--chat-message-background-size-second-row) !important;
     background-size: var(--chat-message-background-size) !important;
     padding: 1rem !important;
     /* To compensate angled author chip */
