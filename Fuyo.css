@@ -270,11 +270,13 @@ yt-live-chat-text-message-renderer span#message {
         (var(--chat-message-background-dot-spacing) / 2) -
             var(--chat-message-background-dot-size)
     );
-    background-position: var(--dot-spacing-first)
+    background-position: calc(
+                var(--dot-spacing-first) + var(--dot-spacing-half-offset)
+            )
             calc(
                 100% - var(--dot-spacing-first) - var(--dot-spacing-half-offset)
             ),
-        var(--dot-spacing-second)
+        calc(var(--dot-spacing-second) + var(--dot-spacing-half-offset))
             calc(
                 100% - var(--dot-spacing-second) -
                     var(--dot-spacing-half-offset)
