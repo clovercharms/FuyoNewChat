@@ -9,11 +9,11 @@
     /* General */
     --chat-font: "Subscribe";
     --chat-font-size: 2.2rem;
-    --chat-photo-size: 2.2rem;
     --chat-border-width: 3px;
     --chat-border-radius: 1rem;
 
     /* Author */
+    --chat-author-photo-size: 2.2rem;
     --chat-author-badge-size: 2rem;
     --chat-author-rotation: -1.2deg;
     --chat-author-height: 3.6rem;
@@ -125,7 +125,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip {
     -webkit-text-stroke: var(--chat-author-color-font-stroke) !important;
     transform-origin: center left !important;
     height: var(--chat-author-height) !important;
-    padding-left: calc(var(--chat-photo-size) + 1.25rem) !important;
+    padding-left: calc(var(--chat-author-photo-size) + 1.25rem) !important;
     padding-right: 1rem !important;
     position: relative !important;
     box-sizing: border-box;
@@ -181,8 +181,8 @@ yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
 
 /* Author photo appearance */
 yt-live-chat-text-message-renderer > yt-img-shadow#author-photo > img {
-    width: var(--chat-photo-size) !important;
-    height: var(--chat-photo-size) !important;
+    width: var(--chat-author-photo-size) !important;
+    height: var(--chat-author-photo-size) !important;
     border-radius: 100% !important;
 }
 
