@@ -42,6 +42,7 @@
         #60ab69 50%,
         #94c085 100%
     );
+    --chat-message-text-padding: 1rem;
     --chat-message-padding-vertical: 0.4rem;
     --chat-message-depth-left-width: calc(var(--chat-border-width) * 0.75);
     --chat-message-background-dot-color: #ecf1f0;
@@ -304,9 +305,11 @@ yt-live-chat-text-message-renderer span#message {
             var(--chat-message-background-dot-spacing),
         var(--chat-message-background-dot-spacing)
             var(--chat-message-background-dot-spacing) !important;
-    padding: 1rem !important;
+    padding: var(--chat-message-text-padding) !important;
     /* To compensate angled author chip */
-    padding-top: 1.75rem !important;
+    padding-top: calc(
+        var(--chat-message-text-padding) + (var(--chat-author-height) / 4)
+    ) !important;
     font-size: var(--chat-font-size) !important;
     border-radius: var(--chat-border-radius) !important;
     border: solid var(--chat-border-width) var(--chat-message-color-border) !important;
