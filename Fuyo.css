@@ -38,6 +38,7 @@
     --chat-message-background-dot-color: #ecf1f0;
     --chat-message-background-dot-size: 3px;
     --chat-message-background-size: 2rem 2rem;
+    --chat-message-background-size-second-row: 1rem 1rem; /* Should be half of the variable above to make the dots alternate */
     --chat-message-decoration-size: 3;
     --chat-message-decoration-offset-left: 2rem;
 
@@ -254,12 +255,9 @@ yt-live-chat-text-message-renderer span#message {
     color: var(--chat-message-color-font) !important;
     -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
     display: block !important;
-    background-image: radial-gradient(
-        var(--chat-message-background-dot-color)
-            var(--chat-message-background-dot-size),
-        var(--chat-message-color-background) 0
-    ) !important;
-    background-position-y: bottom !important;
+    background: var(--chat-message-color-background) !important;
+    background-image: radial-gradient( var(--chat-message-background-dot-color) var(--chat-message-background-dot-size), transparent 0 ), radial-gradient( var(--chat-message-background-dot-color) var(--chat-message-background-dot-size), transparent 0 ) !important;
+    background-position: var(--chat-message-background-size), var(--chat-message-background-size-second-row) !important;
     background-size: var(--chat-message-background-size) !important;
     padding: 1rem !important;
     /* To compensate angled author chip */
