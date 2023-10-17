@@ -253,16 +253,24 @@ yt-live-chat-text-message-renderer span#message {
     -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
     display: block !important;
     background: var(--chat-message-color-background) !important;
-    background-image: radial-gradient(
-            var(--chat-message-background-dot-color)
-                var(--chat-message-background-dot-size),
-            transparent 0
+    background-image:
+        /* Gradient */ linear-gradient(
+            180deg,
+            var(--chat-message-color-background) 20%,
+            transparent 100%
         ),
-        radial-gradient(
-            var(--chat-message-background-dot-color)
-                var(--chat-message-background-dot-size),
-            transparent 0
-        ) !important;
+        /* First row of dots */
+            radial-gradient(
+                var(--chat-message-background-dot-color)
+                    var(--chat-message-background-dot-size),
+                transparent 0
+            ),
+        /* Second row of dots */
+            radial-gradient(
+                var(--chat-message-background-dot-color)
+                    var(--chat-message-background-dot-size),
+                transparent 0
+            ) !important;
     --dot-spacing-first: var(--chat-message-background-dot-spacing);
     --dot-spacing-second: calc(var(--chat-message-background-dot-spacing) / 2);
     /* Ensure a half size offset */
@@ -270,9 +278,8 @@ yt-live-chat-text-message-renderer span#message {
         (var(--chat-message-background-dot-spacing) / 2) -
             var(--chat-message-background-dot-size)
     );
-    background-position: calc(
-                var(--dot-spacing-first) + var(--dot-spacing-half-offset)
-            )
+    background-position: top,
+        calc(var(--dot-spacing-first) + var(--dot-spacing-half-offset))
             calc(
                 100% - var(--dot-spacing-first) - var(--dot-spacing-half-offset)
             ),
@@ -281,8 +288,11 @@ yt-live-chat-text-message-renderer span#message {
                 100% - var(--dot-spacing-second) -
                     var(--dot-spacing-half-offset)
             );
-    background-size: var(--chat-message-background-dot-spacing)
-        var(--chat-message-background-dot-spacing) !important;
+    background-size: contain,
+        var(--chat-message-background-dot-spacing)
+            var(--chat-message-background-dot-spacing),
+        var(--chat-message-background-dot-spacing)
+            var(--chat-message-background-dot-spacing) !important;
     padding: 1rem !important;
     /* To compensate angled author chip */
     padding-top: 1.75rem !important;
@@ -295,7 +305,6 @@ yt-live-chat-text-message-renderer span#message {
         0px var(--chat-message-color-box-shadow) !important;
     /* For message background gradient/decoration */
     position: relative !important;
-    z-index: -2 !important;
 }
 
 /* Gradient over message background */
@@ -304,13 +313,7 @@ yt-live-chat-text-message-renderer span#message::before {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(
-        180deg,
-        var(--chat-message-color-background) 20%,
-        #0000 100%
-    ) !important;
     border-radius: var(--chat-border-radius) !important;
-    z-index: -1 !important;
 }
 
 /* Rainbow stars decoration */
