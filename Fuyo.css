@@ -21,10 +21,10 @@
     --chat-author-offset: translate(1.5rem, 1.2rem);
     --chat-author-color-font: var(--chat-color-accent);
     --chat-author-color-font-stroke: 1px var(--chat-color-tertiary);
-    --chat-author-color-viewer: #cbf2aa;
-    --chat-author-color-viewer-border: #71c185;
-    --chat-author-color-member: #cbf2aa;
-    --chat-author-color-member-border: #71c185;
+    --chat-author-color-viewer: var(--chat-color-primary);
+    --chat-author-color-viewer-border: var(--chat-color-secondary);
+    --chat-author-color-member: var(--chat-color-primary);
+    --chat-author-color-member-border: var(--chat-color-secondary);
     --chat-author-color-moderator: lightblue;
     --chat-author-color-moderator-border: #8aacb8;
     --chat-author-color-owner: #ffd600;
@@ -36,6 +36,13 @@
     --chat-message-color-border: var(--chat-color-primary);
     --chat-message-color-box-shadow: var(--chat-color-secondary);
     --chat-message-color-background: white;
+    --chat-message-depth-background: linear-gradient(
+        90deg,
+        #94c085 0%,
+        #60ab69 50%,
+        #94c085 100%
+    );
+    --chat-message-depth-left-width: calc(var(--chat-border-width) * 0.75);
     --chat-message-background-dot-color: #ecf1f0;
     --chat-message-background-dot-size: 3px;
     --chat-message-background-dot-spacing: 2rem;
@@ -102,8 +109,7 @@ yt-live-chat-item-list-renderer #items {
 yt-live-chat-text-message-renderer {
     all: unset !important;
     display: block !important;
-    padding: var(--chat-border-width) 0 !important;
-    padding-left: var(--chat-border-width) !important;
+    margin: var(--chat-message-depth-left-width) !important;
     animation: 1s message-slide-up !important;
 }
 
@@ -134,7 +140,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip {
     z-index: 1 !important;
 }
 
-/* Message author 3d effect */
+/* Message author depth element */
 yt-live-chat-text-message-renderer yt-live-chat-author-chip::before {
     content: "" !important;
     position: absolute;
@@ -142,7 +148,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::before {
     /* Offset from parent */
     left: -0.5rem !important;
     top: 0.5rem !important;
-    width: 100% !important;
+    width: calc(100% + var(--chat-border-width)) !important;
     height: 100% !important;
     background-color: var(--chat-author-color-viewer) !important;
     border: var(--chat-border-width) solid
@@ -301,19 +307,25 @@ yt-live-chat-text-message-renderer span#message {
     border: solid var(--chat-border-width) var(--chat-message-color-border) !important;
     min-height: 24px !important;
     text-align: center left !important;
-    box-shadow: calc(var(--chat-border-width) * -1) var(--chat-border-width) 0px
-        0px var(--chat-message-color-box-shadow) !important;
     /* For message background gradient/decoration */
     position: relative !important;
 }
 
-/* Gradient over message background */
+/* Message depth element */
 yt-live-chat-text-message-renderer span#message::before {
     all: unset !important;
     content: "" !important;
-    position: absolute !important;
+    position: absolute;
     inset: 0 !important;
+    left: calc(
+        (var(--chat-border-width) * -1) - var(--chat-message-depth-left-width)
+    );
+    /* Offset from parent */
+    width: calc(100% + var(--chat-border-width) * 2) !important;
+    height: calc(100% + var(--chat-border-width) * 2) !important;
     border-radius: var(--chat-border-radius) !important;
+    background: var(--chat-message-depth-background);
+    z-index: -1;
 }
 
 /* Rainbow stars decoration */
