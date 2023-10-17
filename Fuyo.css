@@ -39,7 +39,8 @@
     --chat-message-background-dot-color: #ecf1f0;
     --chat-message-background-dot-size: 3px;
     --chat-message-background-size: 2rem 2rem;
-    --chat-message-background-size-second-row: 1rem 1rem; /* Should be half of the variable above to make the dots alternate */
+    /* Should be half of the variable above to make the dots alternate */
+    --chat-message-background-size-second-row: 1rem 1rem;
     --chat-message-decoration-size: 3;
     --chat-message-decoration-offset-left: 2rem;
 
