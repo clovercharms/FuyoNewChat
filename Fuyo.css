@@ -194,11 +194,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip #chip-badges {
     align-items: center !important;
 }
 
-yt-live-chat-text-message-renderer yt-live-chat-author-chip #chip-badges > * {
-    padding-left: 0.5rem !important;
-    margin: 0 !important;
-}
-
+yt-live-chat-text-message-renderer yt-live-chat-author-chip #chip-badges > *,
 yt-live-chat-text-message-renderer yt-live-chat-author-chip #chat-badges > * {
     padding-left: 0.5rem !important;
     margin: 0 !important;
