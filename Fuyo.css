@@ -344,13 +344,12 @@ yt-live-chat-text-message-renderer span#message {
 
 /* Message depth element */
 yt-live-chat-text-message-renderer span#message::before {
-    all: unset !important;
     content: "" !important;
     position: absolute;
     inset: 0 !important;
     left: calc(
         (var(--chat-border-width) * -1) - var(--chat-message-depth-left-width)
-    );
+    ) !important;
     /* Offset from parent */
     width: calc(100% + var(--chat-border-width) * 2) !important;
     height: calc(100% + var(--chat-border-width) * 2) !important;
