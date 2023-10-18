@@ -16,7 +16,7 @@
     /* Author */
     --chat-author-photo-size: 2.2rem;
     --chat-author-badge-size: 2rem;
-    --chat-author-rotation: -2.5deg;
+    --chat-author-rotation: -3.0deg;
     --chat-author-height: 3.6rem;
     --chat-author-width: 20rem;
     --chat-author-offset: translate(1.5rem, 1.2rem);
@@ -30,7 +30,6 @@
     --chat-author-color-moderator-border: #8aacb8;
     --chat-author-color-owner: #ffd600;
     --chat-author-color-owner-border: #ccab00;
-    --chat-author-background-dot-color: #daf5c3;
     --chat-author-background-dot-size: 4px;
 
     /* Message */
@@ -208,13 +207,13 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
     z-index: -1 !important;
     background-image:
         /* First row of dots */ radial-gradient(
-            var(--chat-author-background-dot-color)
+            rgba(255, 255, 255, .25)
                 var(--chat-author-background-dot-size),
             transparent 0
         ),
         /* Second row of dots */
             radial-gradient(
-                var(--chat-author-background-dot-color)
+                rgba(255, 255, 255, .25)
                     var(--chat-author-background-dot-size),
                 transparent 0
             ) !important;
