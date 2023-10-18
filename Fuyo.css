@@ -115,12 +115,12 @@ yt-live-chat-text-message-renderer {
     position: relative !important;
     display: block !important;
     padding-left: var(--chat-message-depth-left-width) !important;
+    padding-right: 0 !important;
     padding-top: var(--chat-message-padding-vertical) !important;
     padding-bottom: calc(
         var(--chat-border-width) + var(--chat-message-padding-vertical)
     ) !important;
     animation: 1s message-slide-up !important;
-    width: 35rem;
 
     /* Name plate and message background dots */
     --chat-dot-spacing-first: var(--chat-dot-spacing);
@@ -344,6 +344,7 @@ yt-live-chat-text-message-renderer span#message {
 
 /* Message depth element */
 yt-live-chat-text-message-renderer span#message::before {
+    all: unset !important;
     content: "" !important;
     position: absolute;
     inset: 0 !important;
