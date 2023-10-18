@@ -16,7 +16,7 @@
     /* Author */
     --chat-author-photo-size: 2.2rem;
     --chat-author-badge-size: 2rem;
-    --chat-author-rotation: -1.2deg;
+    --chat-author-rotation: -2.5deg;
     --chat-author-height: 3.6rem;
     --chat-author-width: 20rem;
     --chat-author-offset: translate(1.5rem, 1.2rem);
@@ -52,6 +52,7 @@
     --chat-message-background-dot-size: 3px;
     --chat-message-decoration-size: 3;
     --chat-message-decoration-offset-right: 2rem;
+    --chat-message-decoration-offset-top: 0.34rem;
 
     /* Paid Messages */
     --chat-paid-message-color-font: var(--chat-color-accent);
@@ -149,7 +150,7 @@ yt-live-chat-text-message-renderer {
 
 @keyframes author-slide-up {
     from {
-        transform: rotate(-4deg) var(--chat-author-offset);
+        transform: rotate(-5deg) var(--chat-author-offset);
     }
     to {
         transform: rotate(var(--chat-author-rotation)) var(--chat-author-offset);
@@ -346,7 +347,7 @@ yt-live-chat-text-message-renderer span#message {
 yt-live-chat-text-message-renderer span#message::before {
     all: unset !important;
     content: "" !important;
-    position: absolute;
+    position: absolute !important;
     inset: 0 !important;
     left: calc(
         (var(--chat-border-width) * -1) - var(--chat-message-depth-left-width)
@@ -365,7 +366,8 @@ yt-live-chat-text-message-renderer span#message::after {
     content: "" !important;
     position: absolute !important;
     top: calc(
-        var(--chat-message-decoration-size) * (-15.457972px + 0.34rem)
+        var(--chat-message-decoration-size) *
+            (-15.457972px + var(--chat-message-decoration-offset-top))
     ) !important;
     right: var(--chat-message-decoration-offset-right) !important;
     width: calc(var(--chat-message-decoration-size) * 43.80468px) !important;
