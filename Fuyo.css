@@ -378,16 +378,126 @@ yt-live-chat-text-message-renderer span#message::after {
 
 /* Super chat container */
 yt-live-chat-paid-message-renderer {
-    all: unset !important;
-    font-family: var(--chat-font) !important;
-    font-size: var(--chat-font-size) !important;
+    position: relative !important;
+    display: block !important;
+    padding-left: var(--chat-message-depth-left-width) !important;
+    padding-right: 0 !important;
+    padding-top: var(--chat-message-padding-vertical) !important;
+    padding-bottom: calc(
+        var(--chat-border-width) + var(--chat-message-padding-vertical)
+    ) !important;
+    animation: 1s message-slide-up !important;
+
+    /* Name plate and message background dots */
+    --chat-dot-spacing-first: var(--chat-dot-spacing);
+    --chat-dot-spacing-second: calc(var(--chat-dot-spacing) / 2);
+    /* Ensure a half size offset */
+    --chat-dot-spacing-half-offset: calc(
+        (var(--chat-dot-spacing) / 2) - var(--chat-message-background-dot-size)
+    );
+    --dot-background-position: calc(
+                var(--chat-dot-spacing-first) +
+                    var(--chat-dot-spacing-half-offset)
+            )
+            calc(
+                100% - var(--chat-dot-spacing-first) -
+                    var(--chat-dot-spacing-half-offset)
+            ),
+        calc(
+                var(--chat-dot-spacing-second) +
+                    var(--chat-dot-spacing-half-offset)
+            )
+            calc(
+                100% - var(--chat-dot-spacing-second) -
+                    var(--chat-dot-spacing-half-offset)
+            ) !important;
 }
 
-yt-live-chat-paid-message-renderer .yt-live-chat-paid-message-renderer {
+yt-live-chat-paid-message-renderer div#card {
     all: unset !important;
-    color: var(--chat-paid-message-color-font) !important;
-    -webkit-text-stroke: var(--chat-paid-message-color-font-stroke) !important;
-    box-shadow: none !important;
+}
+
+yt-live-chat-paid-message-renderer div#header {
+    font-family: var(--chat-font) !important;
+    font-size: var(--chat-font-size) !important;
+    color: var(--chat-author-color-font) !important;
+    -webkit-text-stroke: var(--chat-author-color-font-stroke) !important;
+    transform-origin: center left !important;
+    height: var(--chat-author-height) !important;
+    padding-left: calc(var(--chat-author-photo-size) + 1.5rem) !important;
+    padding-right: 1rem !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    animation: 1s author-slide-up forwards !important;
+    z-index: 1 !important;
+}
+
+yt-live-chat-paid-message-renderer div#header::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    /* Offset from parent */
+    left: -0.5rem !important;
+    top: 0.5rem !important;
+    width: calc(100% + var(--chat-border-width)) !important;
+    height: 100% !important;
+    background-color: var(--chat-author-color-viewer) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-viewer-border) !important;
+    border-radius: var(--chat-border-radius) !important;
+    box-sizing: border-box !important;
+    z-index: -2 !important;
+}
+
+yt-live-chat-paid-message-renderer div#header::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: color-mix(in srgb, var(--yt-live-chat-paid-message-primary-color) 50%, white) !important;
+    border: var(--chat-border-width) solid
+        var(--chat-author-color-viewer-border) !important;
+    border-radius: var(--chat-border-radius) !important;
+    box-sizing: border-box !important;
+    z-index: -1 !important;
+    background-image:
+        /* First row of dots */ radial-gradient(
+            rgba(255, 255, 255, .25)
+                var(--chat-author-background-dot-size),
+            transparent 0
+        ),
+        /* Second row of dots */
+            radial-gradient(
+                rgba(255, 255, 255, .25)
+                    var(--chat-author-background-dot-size),
+                transparent 0
+            ) !important;
+    background-position: var(--dot-background-position) !important;
+    background-size: var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
+}
+
+yt-live-chat-paid-message-renderer div#content {
+    all: unset !important;
+    font-family: var(--chat-font) !important;
+    color: var(--chat-message-color-font) !important;
+    -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
+    display: block !important;
+    background: color-mix(in srgb, var(--yt-live-chat-paid-message-primary-color) 50%, white) !important;
+    background-position: top, var(--dot-background-position) !important;
+    background-size: contain, var(--chat-dot-spacing) var(--chat-dot-spacing), var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
+    padding: var(--chat-message-text-padding) !important;
+    /* To compensate angled author chip */
+    padding-top: calc(var(--chat-message-text-padding) + (var(--chat-author-height) / 4)) !important;
+    font-size: var(--chat-font-size) !important;
+    border-radius: var(--chat-border-radius) !important;
+    border: solid var(--chat-border-width) var(--chat-message-color-border) !important;
+    min-height: 24px !important;
+    text-align: center left !important;
+    /* For message background gradient/decoration */
+    position: relative !important;
 }
 
 /* Made in cooperation between frammie, iSneeze and Matze149  */
