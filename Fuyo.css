@@ -300,6 +300,38 @@ yt-live-chat-author-badge-renderer[type="moderator"] {
     display: none !important;
 }
 
+/* Replace member badges with higher quality versions */
+
+/* New-member Badge */
+yt-live-chat-author-badge-renderer img[src='https://yt3.ggpht.com/6RIXaNblMuT34yrSfZ6EJwq6JCU4-u-XH6g_MJXqSvR6AB6jR38F9zybRSLQmhnvtjcJQpohPwM=s16-c-k']
+{
+    content: url("https://yt3.ggpht.com/6RIXaNblMuT34yrSfZ6EJwq6JCU4-u-XH6g_MJXqSvR6AB6jR38F9zybRSLQmhnvtjcJQpohPwM=s64-c-k");
+}
+
+/* Month 1 Badge */
+yt-live-chat-author-badge-renderer img[src='https://yt3.ggpht.com/C25Jeh9XgJQcxxRgD6q9GYH5vZyXAR-wSVgnZZjHIlrogsOLgsVa5OYMo_mvgAhq_T0IcIQSNA=s16-c-k']
+{
+    content: url("https://yt3.ggpht.com/C25Jeh9XgJQcxxRgD6q9GYH5vZyXAR-wSVgnZZjHIlrogsOLgsVa5OYMo_mvgAhq_T0IcIQSNA=s64-c-k");
+}
+
+/* Month 2 Badge */
+yt-live-chat-author-badge-renderer img[src='https://yt3.ggpht.com/vnm6H804K-AGxTiL2ujX9eXfxQqxzcZQGbYaKgKuFNn8sh_jcaCLhBf19uaBtv7XHQd1KWxH=s16-c-k']
+{
+    content: url("https://yt3.ggpht.com/vnm6H804K-AGxTiL2ujX9eXfxQqxzcZQGbYaKgKuFNn8sh_jcaCLhBf19uaBtv7XHQd1KWxH=s64-c-k");
+}
+
+/* Month 6 Badge */
+yt-live-chat-author-badge-renderer img[src='https://yt3.ggpht.com/z2jObiuidltrBKnhxk6kNL4zsV_AX0MbLlS6H8Plh8wG7AqfPMkqEjydfuXJro4F_ctp_c3eIA=s16-c-k']
+{
+    content: url("https://yt3.ggpht.com/z2jObiuidltrBKnhxk6kNL4zsV_AX0MbLlS6H8Plh8wG7AqfPMkqEjydfuXJro4F_ctp_c3eIA=s64-c-k");
+}
+
+/* Month 12 Badge */
+yt-live-chat-author-badge-renderer img[src='https://yt3.ggpht.com/N0Uy5nkpzftXfIh5B9R80EBVNwICeD1fkyt2M_7c8S13BPmAicIipa7irHwHL4E1mf6C58Eyng=s16-c-k']
+{
+    content: url("https://yt3.ggpht.com/N0Uy5nkpzftXfIh5B9R80EBVNwICeD1fkyt2M_7c8S13BPmAicIipa7irHwHL4E1mf6C58Eyng=s64-c-k");
+}
+
 /* Chat message container */
 yt-live-chat-text-message-renderer span#message {
     all: unset !important;
