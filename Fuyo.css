@@ -12,11 +12,12 @@
     --chat-border-width: 2.5px;
     --chat-border-radius: 1rem;
     --chat-dot-spacing: 2rem;
+    --chat-animation-duration: 0.5s;
 
     /* Author */
     --chat-author-photo-size: 2.2rem;
     --chat-author-badge-size: 2rem;
-    --chat-author-rotation: -3.0deg;
+    --chat-author-rotation: -3deg;
     --chat-author-height: 3.6rem;
     --chat-author-width: 20rem;
     --chat-author-offset: translate(1.5rem, 1.2rem);
@@ -30,6 +31,7 @@
     --chat-author-color-moderator-border: #8aacb8;
     --chat-author-color-owner: #ffd600;
     --chat-author-color-owner-border: #ccab00;
+    --chat-author-background-dot-color: rgb(255 255 255 / 0.25);
     --chat-author-background-dot-size: 4px;
 
     /* Message */
@@ -47,7 +49,7 @@
     --chat-message-text-padding: 1rem;
     --chat-message-padding-vertical: 0.4rem;
     --chat-message-depth-left-width: calc(var(--chat-border-width) * 0.75);
-    --chat-message-background-dot-color: #ecf1f0;
+    --chat-message-background-dot-color: rgb(0 0 0 / 0.05);
     --chat-message-background-dot-size: 3px;
     --chat-message-decoration-size: 3;
     --chat-message-decoration-offset-right: 2rem;
@@ -120,7 +122,7 @@ yt-live-chat-text-message-renderer {
     padding-bottom: calc(
         var(--chat-border-width) + var(--chat-message-padding-vertical)
     ) !important;
-    animation: 1s message-slide-up !important;
+    animation: var(--chat-animation-duration) message-slide-up !important;
 
     /* Name plate and message background dots */
     --chat-dot-spacing-first: var(--chat-dot-spacing);
@@ -170,7 +172,7 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip {
     box-sizing: border-box !important;
     display: inline-flex !important;
     align-items: center !important;
-    animation: 1s author-slide-up forwards !important;
+    animation: var(--chat-animation-duration) author-slide-up forwards !important;
     z-index: 1 !important;
 }
 
@@ -207,13 +209,13 @@ yt-live-chat-text-message-renderer yt-live-chat-author-chip::after {
     z-index: -1 !important;
     background-image:
         /* First row of dots */ radial-gradient(
-            rgba(255, 255, 255, .25)
+            var(--chat-author-background-dot-color)
                 var(--chat-author-background-dot-size),
             transparent 0
         ),
         /* Second row of dots */
             radial-gradient(
-                rgba(255, 255, 255, .25)
+                var(--chat-author-background-dot-color)
                     var(--chat-author-background-dot-size),
                 transparent 0
             ) !important;
@@ -229,7 +231,7 @@ yt-live-chat-text-message-renderer > yt-img-shadow#author-photo {
     display: inline-flex !important;
     align-items: center !important;
     z-index: 2 !important;
-    animation: 1s author-slide-up forwards !important;
+    animation: var(--chat-animation-duration) author-slide-up forwards !important;
 }
 
 /* Author photo appearance */
@@ -418,7 +420,7 @@ yt-live-chat-paid-message-renderer {
     padding-bottom: calc(
         var(--chat-border-width) + var(--chat-message-padding-vertical)
     ) !important;
-    animation: 1s message-slide-up !important;
+    animation: var(--chat-animation-duration) message-slide-up !important;
 
     /* Name plate and message background dots */
     --chat-dot-spacing-first: var(--chat-dot-spacing);
@@ -462,7 +464,7 @@ yt-live-chat-paid-message-renderer div#header {
     box-sizing: border-box !important;
     display: inline-flex !important;
     align-items: center !important;
-    animation: 1s author-slide-up forwards !important;
+    animation: var(--chat-animation-duration) author-slide-up forwards !important;
     z-index: 1 !important;
 }
 
@@ -489,7 +491,11 @@ yt-live-chat-paid-message-renderer div#header::after {
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: color-mix(in srgb, var(--yt-live-chat-paid-message-primary-color) 50%, white) !important;
+    background-color: color-mix(
+        in srgb,
+        var(--yt-live-chat-paid-message-primary-color) 50%,
+        white
+    ) !important;
     border: var(--chat-border-width) solid
         var(--chat-author-color-viewer-border) !important;
     border-radius: var(--chat-border-radius) !important;
@@ -497,13 +503,13 @@ yt-live-chat-paid-message-renderer div#header::after {
     z-index: -1 !important;
     background-image:
         /* First row of dots */ radial-gradient(
-            rgba(255, 255, 255, .25)
+            var(--chat-author-background-dot-color)
                 var(--chat-author-background-dot-size),
             transparent 0
         ),
         /* Second row of dots */
             radial-gradient(
-                rgba(255, 255, 255, .25)
+                var(--chat-author-background-dot-color)
                     var(--chat-author-background-dot-size),
                 transparent 0
             ) !important;
@@ -517,12 +523,19 @@ yt-live-chat-paid-message-renderer div#content {
     color: var(--chat-message-color-font) !important;
     -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
     display: block !important;
-    background: color-mix(in srgb, var(--yt-live-chat-paid-message-primary-color) 50%, white) !important;
+    background: color-mix(
+        in srgb,
+        var(--yt-live-chat-paid-message-primary-color) 50%,
+        white
+    ) !important;
     background-position: top, var(--dot-background-position) !important;
-    background-size: contain, var(--chat-dot-spacing) var(--chat-dot-spacing), var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
+    background-size: contain, var(--chat-dot-spacing) var(--chat-dot-spacing),
+        var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
     padding: var(--chat-message-text-padding) !important;
     /* To compensate angled author chip */
-    padding-top: calc(var(--chat-message-text-padding) + (var(--chat-author-height) / 4)) !important;
+    padding-top: calc(
+        var(--chat-message-text-padding) + (var(--chat-author-height) / 4)
+    ) !important;
     font-size: var(--chat-font-size) !important;
     border-radius: var(--chat-border-radius) !important;
     border: solid var(--chat-border-width) var(--chat-message-color-border) !important;
