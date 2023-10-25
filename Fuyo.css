@@ -36,7 +36,7 @@
 
     /* Message */
     --chat-message-color-font: var(--chat-color-accent);
-    --chat-message-color-font-stroke: 1px var(--chat-color-secondary);
+    --chat-message-color-font-stroke: 1.25px var(--chat-color-secondary);
     --chat-message-color-border: var(--chat-color-primary);
     --chat-message-color-box-shadow: var(--chat-color-secondary);
     --chat-message-color-background: white;
