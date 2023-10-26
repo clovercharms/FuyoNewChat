@@ -468,12 +468,20 @@ yt-live-chat-paid-message-renderer #card::after {
     background-image: var(--rainbow-svg) !important;
 }
 
+/* Vertically align profile picture and header content */
 yt-live-chat-paid-message-renderer #header {
     all: unset !important;
     display: flex !important;
-    flex-direction: row !important;
+    align-items: center !important;
 }
 
+yt-live-chat-paid-message-renderer #header-content {
+    all: unset !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* [FIXME] Wrapping */
 yt-live-chat-paid-message-renderer #header #author-name {
     all: unset !important;
 }
@@ -483,6 +491,7 @@ yt-live-chat-paid-message-renderer #content {
 }
 
 yt-live-chat-paid-message-renderer #message {
+    all: unset !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -490,15 +499,22 @@ yt-live-chat-paid-message-renderer #message {
     padding-top: var(--chat-message-text-padding) !important;
 }
 
-yt-live-chat-paid-message-renderer #message::after {
+/* Coin either after header or content based on type */
+yt-live-chat-paid-message-renderer #message::after,
+yt-live-chat-paid-message-renderer[show-only-header] #header::after {
     content: "";
-    align-self: flex-end;
+    margin-left: auto;
     flex-shrink: 0;
     width: 50px;
     height: 50px;
-    background-size: 50px;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-image: var(--coin-svg);
+}
+
+/* Content hidden when show-only-header */
+yt-live-chat-paid-message-renderer[show-only-header] #message {
+    display: none !important;
 }
 
 /* Made in cooperation between frammie, iSneeze, Matze149 and Nekomimi  */
