@@ -493,9 +493,6 @@ yt-live-chat-paid-message-renderer #content {
 yt-live-chat-paid-message-renderer #message {
     all: unset !important;
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
     padding-top: var(--chat-message-text-padding) !important;
 }
 
@@ -503,6 +500,7 @@ yt-live-chat-paid-message-renderer #message {
 yt-live-chat-paid-message-renderer #message::after,
 yt-live-chat-paid-message-renderer[show-only-header] #header::after {
     content: "";
+    align-self: flex-end;
     margin-left: auto;
     flex-shrink: 0;
     width: 50px;
@@ -510,6 +508,7 @@ yt-live-chat-paid-message-renderer[show-only-header] #header::after {
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: var(--coin-svg);
+    background-position: center !important;
 }
 
 /* Content hidden when show-only-header */
