@@ -415,7 +415,8 @@ yt-live-chat-text-message-renderer span#message::after {
     background-image: var(--rainbow-svg) !important;
 }
 
-/* Super chat container */
+/* Super chat and member message container */
+yt-live-chat-membership-item-renderer,
 yt-live-chat-paid-message-renderer {
     position: relative !important;
     display: block !important;
@@ -438,6 +439,7 @@ yt-live-chat-paid-message-renderer {
         calc(100% - var(--chat-dot-spacing-second) - var(--chat-dot-spacing-half-offset)) !important;
 }
 
+yt-live-chat-membership-item-renderer #card,
 yt-live-chat-paid-message-renderer #card {
     color: var(--chat-message-color-font) !important;
     -webkit-text-stroke: var(--chat-message-color-font-stroke) !important;
@@ -453,8 +455,25 @@ yt-live-chat-paid-message-renderer #card {
         radial-gradient(var(--chat-author-background-dot-color) var(--chat-author-background-dot-size), transparent 0) !important;
     background-position: var(--dot-background-position) !important;
     background-size: var(--chat-dot-spacing) var(--chat-dot-spacing) !important;
+    box-shadow: none !important;
 }
 
+/* Fix for membership messages background */
+yt-live-chat-membership-item-renderer #card {
+    background-color: color-mix(in srgb, var(--yt-live-chat-sponsor-color) 55%, white) !important;
+}
+
+yt-live-chat-membership-item-renderer #card::before,
+yt-live-chat-paid-message-renderer #card::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 38px 0 4px 0 !important;
+    border-radius: var(--chat-border-radius) !important;
+    background: var(--chat-message-depth-background) !important;
+    z-index: -1 !important;
+}
+
+yt-live-chat-membership-item-renderer #card::after,
 yt-live-chat-paid-message-renderer #card::after {
     all: unset !important;
     content: "" !important;
@@ -469,12 +488,14 @@ yt-live-chat-paid-message-renderer #card::after {
 }
 
 /* Vertically align profile picture and header content */
+yt-live-chat-membership-item-renderer #header,
 yt-live-chat-paid-message-renderer #header {
     all: unset !important;
     display: flex !important;
     align-items: center !important;
 }
 
+yt-live-chat-membership-item-renderer #header-content,
 yt-live-chat-paid-message-renderer #header-content {
     all: unset !important;
     display: flex !important;
@@ -482,14 +503,17 @@ yt-live-chat-paid-message-renderer #header-content {
 }
 
 /* [FIXME] Wrapping */
+yt-live-chat-membership-item-renderer #header #author-name,
 yt-live-chat-paid-message-renderer #header #author-name {
     all: unset !important;
 }
 
+yt-live-chat-membership-item-renderer #content,
 yt-live-chat-paid-message-renderer #content {
     all: unset !important;
 }
 
+yt-live-chat-membership-item-renderer #message,
 yt-live-chat-paid-message-renderer #message {
     all: unset !important;
     display: flex !important;
@@ -506,14 +530,20 @@ yt-live-chat-paid-message-renderer[show-only-header] #header::after {
     width: 50px;
     height: 50px;
     background-size: 100%;
+    transform: rotate(30deg);
     background-repeat: no-repeat;
     background-image: var(--coin-svg);
-    background-position: center !important;
+    background-position: center;
 }
 
 /* Content hidden when show-only-header */
 yt-live-chat-paid-message-renderer[show-only-header] #message {
     display: none !important;
+}
+
+yt-live-chat-membership-item-renderer #header-subtext {
+    all: unset !important;
+    font-size: 15px !important;
 }
 
 /* Made in cooperation between frammie, iSneeze, Matze149 and Nekomimi  */
