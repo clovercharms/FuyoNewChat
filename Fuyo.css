@@ -419,6 +419,8 @@ yt-live-chat-text-message-renderer span#message::after {
 yt-live-chat-paid-message-renderer {
     position: relative !important;
     display: block !important;
+    font-family: var(--chat-font) !important;
+    font-size: var(--chat-font-size) !important;
     padding-left: var(--chat-message-depth-left-width) !important;
     padding-right: 0 !important;
     padding-top: var(--chat-paid-message-padding-vertical) !important;
@@ -491,6 +493,7 @@ yt-live-chat-paid-message-renderer #message {
 yt-live-chat-paid-message-renderer #message::after {
     content: "";
     align-self: flex-end;
+    flex-shrink: 0;
     width: 50px;
     height: 50px;
     background-size: 50px;
