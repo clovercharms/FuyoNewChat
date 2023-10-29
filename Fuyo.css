@@ -105,6 +105,21 @@ yt-live-chat-item-list-renderer #items {
     transform: translateY(0) !important;
 }
 
+/* Hide all but known (styled) elements */
+yt-live-chat-item-list-renderer #items > * {
+    display: none !important;
+}
+
+/* Show known styled elements */
+yt-live-chat-item-list-renderer #items > yt-live-chat-paid-message-renderer,
+yt-live-chat-item-list-renderer
+    #items
+    > ytd-sponsorships-live-chat-gift-purchase-announcement-renderer,
+yt-live-chat-item-list-renderer #items > yt-live-chat-text-message-renderer,
+yt-live-chat-item-list-renderer #items > yt-live-chat-paid-sticker-renderer {
+    display: inherit !important;
+}
+
 /* Hide bumpers */
 yt-live-chat-item-list-renderer #items #lower-bumper {
     display: none !important;
