@@ -105,6 +105,11 @@ yt-live-chat-item-list-renderer #items {
     transform: translateY(0) !important;
 }
 
+/* Hide bumpers */
+yt-live-chat-item-list-renderer #items #lower-bumper {
+    display: none !important;
+}
+
 /* Animation for message appearing */
 @keyframes message-slide-up {
     from {
