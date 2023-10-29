@@ -706,7 +706,7 @@ yt-live-chat-paid-message-renderer[show-only-header] #header::after,
 yt-live-chat-membership-item-renderer[show-only-header] #header::after {
     content: "";
     align-self: flex-end;
-    margin-left: 1rem;
+    margin-left: auto;
     flex-shrink: 0;
     width: var(--chat-message-paid-coin-size);
     height: var(--chat-message-paid-coin-size);
