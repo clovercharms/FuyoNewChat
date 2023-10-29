@@ -7,7 +7,7 @@
     --chat-color-tertiary: #406345;
 
     /* General */
-    --chat-font: "Subscribe";
+    --chat-font: "Subscribe Regular";
     --chat-font-size: 2.2rem;
     --chat-border-width: 2.5px;
     --chat-border-radius: 1rem;
@@ -148,6 +148,8 @@ yt-live-chat-text-message-renderer {
         var(--chat-border-width) + var(--chat-message-padding-vertical)
     ) !important;
     animation: var(--chat-animation-duration) message-slide-up !important;
+    overflow: visible !important;
+    contain: unset !important;
 
     /* Name plate and message background dots */
     --chat-dot-spacing-first: var(--chat-dot-spacing);
@@ -176,7 +178,8 @@ yt-live-chat-text-message-renderer {
 
 @keyframes author-slide-up {
     from {
-        transform: rotate(-5deg) var(--chat-author-offset);
+        transform: rotate(calc(var(--chat-author-rotation) * 2))
+            var(--chat-author-offset);
     }
     to {
         transform: rotate(var(--chat-author-rotation)) var(--chat-author-offset);
