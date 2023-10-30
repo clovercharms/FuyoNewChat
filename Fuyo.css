@@ -20,7 +20,7 @@
     --chat-author-badge-size: 2rem;
     --chat-author-rotation: -3deg;
     --chat-author-height: 3.6rem;
-    --chat-author-width: 20rem;
+    --chat-author-width: 15rem;
     --chat-author-offset: translate(1.5rem, 1.2rem);
     --chat-author-color-font: var(--chat-color-accent);
     --chat-author-color-font-stroke: 1px var(--chat-color-tertiary);
