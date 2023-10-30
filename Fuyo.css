@@ -634,12 +634,23 @@ ytd-sponsorships-live-chat-header-renderer #header #author-name {
     -webkit-line-clamp: 1 !important;
 }
 
-/* Keep same font size for subtext */
+/* Keep same font size for member subtext */
 yt-live-chat-membership-item-renderer #header #header-primary-text,
-yt-live-chat-membership-item-renderer #header #header-subtext,
+yt-live-chat-membership-item-renderer #header #header-subtext {
+    all: unset !important;
+}
+
+/* Reduce font size for gifted notice */
+ytd-sponsorships-live-chat-gift-purchase-announcement-renderer
+    #header
+    #author-name {
+    font-size: calc(0.9 * var(--chat-font-size)) !important;
+}
+
 ytd-sponsorships-live-chat-header-renderer #header #primary-text,
 ytd-sponsorships-live-chat-header-renderer #header #secondary-text {
     all: unset !important;
+    font-size: calc(0.9 * var(--chat-font-size)) !important;
 }
 
 /* Overwrite sticker font specific selectors */
