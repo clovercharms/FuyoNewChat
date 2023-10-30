@@ -315,16 +315,19 @@ yt-live-chat-text-message-renderer > yt-img-shadow#author-photo > img {
 }
 
 /* Chat badges */
-yt-live-chat-author-chip #chat-badges,
-yt-live-chat-author-chip #chip-badges {
+yt-live-chat-author-chip #chat-badges {
     display: inline-flex !important;
     align-items: center !important;
 }
 
-yt-live-chat-author-chip #chip-badges > *,
 yt-live-chat-author-chip #chat-badges > * {
     padding-left: 0.5rem !important;
     margin: 0 !important;
+}
+
+/* Hide chip badges */
+yt-live-chat-author-chip #chip-badges {
+    display: none !important;
 }
 
 /* Author text appearance */
