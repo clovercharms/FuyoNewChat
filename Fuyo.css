@@ -673,6 +673,7 @@ yt-live-chat-paid-sticker-renderer #content,
 yt-live-chat-membership-item-renderer #content,
 ytd-sponsorships-live-chat-header-renderer #content {
     all: unset !important;
+    display: flex !important;
 }
 
 /* Vertically align header */
@@ -685,8 +686,9 @@ yt-live-chat-membership-item-renderer #message,
 yt-live-chat-paid-message-renderer #message,
 yt-live-chat-membership-item-renderer #message {
     all: unset !important;
-    display: flex !important;
     padding-top: var(--chat-message-text-padding) !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
 }
 
 /* Animation for coin rotating */
@@ -700,16 +702,17 @@ yt-live-chat-membership-item-renderer #message {
 }
 
 /* Coin either after header or content based on type */
-yt-live-chat-paid-message-renderer #message::after,
-yt-live-chat-membership-item-renderer #message::after,
+yt-live-chat-paid-message-renderer #content::after,
+yt-live-chat-membership-item-renderer #content::after,
 yt-live-chat-paid-message-renderer[show-only-header] #header::after,
 yt-live-chat-membership-item-renderer[show-only-header] #header::after {
     content: "";
-    align-self: flex-end;
-    margin-left: auto;
+    display: block;
     flex-shrink: 0;
-    width: var(--chat-message-paid-coin-size);
+    margin-left: auto;
+    margin-top: auto;
     height: var(--chat-message-paid-coin-size);
+    width: var(--chat-message-paid-coin-size);
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: var(--coin-svg);
@@ -718,8 +721,8 @@ yt-live-chat-membership-item-renderer[show-only-header] #header::after {
 }
 
 /* Content hidden when show-only-header */
-yt-live-chat-paid-message-renderer[show-only-header] #message,
-yt-live-chat-membership-item-renderer[show-only-header] #message {
+yt-live-chat-paid-message-renderer[show-only-header] #content,
+yt-live-chat-membership-item-renderer[show-only-header] #content {
     display: none !important;
 }
 
